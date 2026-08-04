@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Kakaaa Dindaaa ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:100vh;
+background:linear-gradient(135deg,#ffd6e7,#ffe8d9,#f3d2c1);
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.card{
+width:90%;
+max-width:700px;
+background:#fff8f8;
+padding:40px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,.15);
+text-align:center;
+animation:fade .7s;
+border:6px solid #ffb7d5;
+position:relative;
+z-index:2;
+}
+
+h1{
+font-family:Pacifico;
+font-size:40px;
+color:#ff4f93;
+margin-bottom:20px;
+}
+
+p{
+font-size:20px;
+line-height:1.8;
+color:#7a4d3b;
+margin-bottom:30px;
+}
+
+button{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:#ff5fa2;
+color:white;
+transition:.3s;
+font-weight:bold;
+}
+
+button:hover{
+background:#d86d8d;
+transform:scale(1.08);
+}
+
+.progress{
+position:absolute;
+top:0;
+left:0;
+height:8px;
+background:#ff69b4;
+transition:.5s;
+border-radius:20px;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 8s linear infinite;
+opacity:.6;
+}
+
+@keyframes float{
+0%{
+transform:translateY(110vh) rotate(0deg);
+opacity:0;
+}
+20%{
+opacity:.8;
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.footer{
+margin-top:20px;
+color:#b46f56;
+font-size:14px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="card">
+
+<h1 id="title"></h1>
+
+<p id="text"></p>
+
+<button onclick="nextSlide()" id="btn">Lanjut ➜</button>
+
+<div class="footer">
+Made with ❤️ khusus buat Kakaaa Dindaaa
+</div>
+
+</div>
+
+<script>
+
+const slides=[
+
+{
+title:"🎂 Haiii Kakaaa Dindaaa!!",
+text:"Hari ini adalah hari spesial seseorang yang level lucunya tinggi, cantiknya kebangetan, baiknya bikin iri satu RT. Selamat ulang tahun yaa Kakaaa Dindaaa! Semoga senyumnya makin mahal tapi tetep gratis buat orang-orang tersayang. 🤍"
+},
+
+{
+title:"🎁 Wish Nomor Dua",
+text:"Semoga panjang umur, sehat selalu, rezekinya ngalir kayak diskon tanggal kembar. Semoga setiap langkah Kakaaa selalu dipenuhi kebahagiaan, dan semoga dompetnya makin tebel... biar bisa traktir aku. Hehehe 😆"
+},
+
+{
+title:"🍰 Fakta Ilmiah",
+text:"Menurut penelitian yang aku buat sendiri, dunia menjadi sekitar 99,9% lebih berwarna sejak Kakaaa Dindaaa lahir. Sisanya 0,1% karena warna pink belum cukup banyak. Jadi jangan pernah berhenti jadi diri sendiri yaa! 🌸"
+},
+
+{
+title:"💖 Pesan Rahasia",
+text:"Kalau nanti ada hari yang bikin capek, ingat ya... masih banyak orang yang sayang sama Kakaaa. Tetap semangat mengejar mimpi, jangan menyerah. Dan jangan lupa makan yang banyak... soalnya cantik aja nggak cukup, harus kenyang juga. 😂"
+},
+
+{
+title:"🎉 Happy Birthday!!",
+text:"Selamat ulang tahun Kakaaa Dindaaa!! Semoga semua doa baik segera dikabulkan, bahagia selalu, sukses terus, dan senyumnya nggak pernah hilang. Terima kasih sudah menjadi orang yang luar biasa. Selamat menikmati hari spesialmu! 🎂💕"
+}
+
+];
+
+let index=0;
+
+const title=document.getElementById("title");
+const text=document.getElementById("text");
+const progress=document.getElementById("progress");
+
+function showSlide(){
+
+title.innerHTML=slides[index].title;
+text.innerHTML=slides[index].text;
+
+progress.style.width=((index+1)/slides.length)*100+"%";
+
+if(index===slides.length-1){
+document.getElementById("btn").innerHTML="🎉 Selesai";
+}
+
+}
+
+function nextSlide(){
+
+    if(index < slides.length-1){
+
+        index++;
+        showSlide();
+
+    }else{
+
+        showVideo();
+
+    }
+
+}
+
+function showVideo(){
+
+document.querySelector(".card").innerHTML = `
+
+<h1>🎥 Video Untuk Kakaaa Dindaaa 💖</h1>
+
+<video
+id="birthdayVideo"
+controls
+autoplay
+style="
+width:100%;
+border-radius:20px;
+margin:20px 0;
+box-shadow:0 10px 25px rgba(0,0,0,.2);">
+
+<source src="BukaaNyaDiWebYaa/habedeekakaa.mp4" type="video/mp4">
+
+Browser tidak mendukung video.
+
+</video>
+
+<br>
+
+<button onclick="showEnd()">
+💖 Lanjut
+</button>
+
+`;
+
+}
+
+function playVideo(){
+
+    document.getElementById("habedeekakaa.mp4").play();
+
+}
+
+function showEnd(){
+
+document.querySelector(".card").innerHTML=`
+
+<h1>🎉 Selamat Ulang Tahun Kakaaa Dindaaa 🎂</h1>
+
+<p>
+
+Terima kasih sudah menonton videonya.
+
+Semoga Kakaaa selalu diberikan kesehatan,
+kebahagiaan, rezeki yang berlimpah,
+dan semua impian Kakaaa bisa tercapai.
+
+Semoga senyum Kakaaa tidak pernah hilang,
+dan semoga hari ini menjadi awal dari
+tahun yang penuh kebahagiaan.
+
+❤️❤️❤️
+
+</p>
+
+<button onclick="location.reload()">
+
+🔄 Lihat Lagi
+
+</button>
+
+`;
+
+}
+
+showSlide();
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=Math.random()>0.5?"💗":"🤎";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*25)+"px";
+
+heart.style.animationDuration=(5+Math.random()*6)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},11000);
+
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
